@@ -1,0 +1,61 @@
+{% extends "weather/base.html" %}
+{% block content %}
+</br>
+<form action="{% url 'profile_url' pk=request.user.pk %}" method="POST">
+{% csrf_token %}
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+{{ form.non_field_errors }}
+</div>
+{% endif %}
+<a href="{% url 'index_url' %}" class="btn btn-danger " role="button" aria-pressed="true" style="position:fixed;right:0;z-index:500;">Exit without saving</a>
+<div class="alert alert-primary  mx-auto " role=alert style="width: 250px;">
+   <h5> Profile settings </h5>
+    
+  </div>
+
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputLogin">Your username is </label>
+    {{ form.username }} </br>
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputEmail1">Your Email is</label>
+    {{ form.email }} </br>
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputFavoriteCities">Your favorite cities are </label> </br>
+    {{ form.favorite_cities }}
+  </div>
+  
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+   <h7> Available API for checking weather are: </h7>
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleCheckAPIOW">Openweathermap_API</label> 
+    {{ form.open_weather_map }}
+  </div>
+  
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleCheckAPIW">Weather_API</label> 
+    {{ form.weather_api }}
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleCheckAPIWWO">Worldweatheronline_API</label> 
+    {{ form.world_weather_online }}
+  </div>
+  
+  <div class="mx-auto" style="width: 200px;">
+  
+  <button type="submit" class="btn btn-primary">Update</button> 
+
+  
+  </div>
+  </br>
+  </br>
+
+</form>
+ {% endblock %}

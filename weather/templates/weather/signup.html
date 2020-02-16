@@ -1,0 +1,40 @@
+ {% extends "weather/base.html" %}
+ {% block content %}
+</br>
+<form action = "{% url 'signup_url' %}" method="POST">
+{% csrf_token %}
+<div class="mx-auto" style="width: 200px;">
+   <h5> Registration page </h5>
+    
+  </div>
+
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputLogin">Login</label></br>
+    {{ form.username }}
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputEmail1">Email</label></br>
+    {{ form.email }}
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputPassword1">Password</label> </br>
+    {{ form.password1 }}
+  </div>
+  
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputPassword2">Confirm your password</label> </br>
+    {{ form.password2 }}
+  </div>
+  </br>
+  
+  <div class="mx-auto" style="width: 200px;">
+  <button type="submit" class="btn btn-primary">Sign up</button>
+  </div>
+  </br>
+  </br>
+
+</form>
+ {% endblock %}

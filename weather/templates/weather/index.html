@@ -1,0 +1,277 @@
+{% extends "weather/base.html" %}
+{% block content %}
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-6">
+
+        <h1 class="my-3">Check weather in your city without registration right now!
+        </h1>
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <img class="card-img-top" src="https://d34t42wpe6kclg.cloudfront.net/bg/live/publication/9/5/2/95280/pictures/b122f3d9074e27761728fffa4de904b9C!re397057d2d8e0f31c6e3c7c013a24fdd.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">For saving your city register now and receive weather when you need in Telegram.</h2>
+            {% if cities %}
+                {% for city in cities %}
+                      {% if city.message %}
+                      <div class="alert alert-danger" role="alert">
+                        <p> {{ city.city }} {{ city.message }}</p> 
+                     </br>
+                        
+                        </div>
+                      {% else %}
+                <div class="alert alert-info" role="alert">
+                   <p> In {{ city.city }} now 
+                   {{ city.temp }}<sup>o</sup>C <img src="http://openweathermap.org/img/w/{{ city.icon }}.png" alt="Weather_photo"
+                   class="rounded float-right"></p> 
+                </br>
+                   
+                   </div>
+                   {% endif %}
+                {% endfor %}
+                <form action = "{% url 'index_url' %}" method="POST">
+                 {% csrf_token %}
+                 <label for = "Enter city"> Need to check weather in another city?<label>
+                 {{ form.city_name }}
+                 <button type="submit" class="btn btn-primary btn-lg btn-block" >Try again!</button>
+                 </form>
+             {% else %}   
+            <form action="{% url 'index_url' %}" method="POST">
+                {% csrf_token %}
+                <label for="Enter city">Enter city:</label>
+                
+              {{ form.city_name }}
+              
+              <button type="submit" class="btn btn-primary btn-lg btn-block" >Check Weather</button>
+            </form>
+            {% endif %}
+            
+
+            
+            
+          </div>
+          
+        </div>
+
+        
+
+      </div>
+      {% if user.is_authenticated %}
+      <!-- Sidebar Widgets Column -->
+      {% if weather_api1 %}
+      <div class="col-md-2">
+
+        
+        
+        <!-- Side Widget -->
+        
+        <div class="card my-2">
+          <h5 class="card-header">Weather in favorite cities</h5>
+          <div class="card-body">
+            
+              {% for user_city in weather_api1 %}
+              {% if user_city.message %}
+                      <div class="alert alert-danger" role="alert">
+                        <p> {{ user_city.city }} {{ user_city.message }}</p> 
+                     </br>
+                        
+                        </div>
+                      {% else %}
+                <div class="alert alert-info" role="alert">
+                   <p> In {{ user_city.city }} now 
+                   {{ user_city.temp }}<sup>o</sup>C <img src="http://openweathermap.org/img/w/{{ user_city.icon }}.png" alt="Weather_photo"
+                   class="rounded float-right"></p> 
+                </br>
+                   
+                   </div>
+                   {% endif %}
+                   {% endfor %}
+                   
+                   {% else %}
+                   <div class="col-md-2" hidden>
+
+        
+        
+                    <!-- Side Widget -->
+                    
+                    <div class="card my-2">
+                      <h5 class="card-header">Weather in favorite cities</h5>
+                      <div class="card-body">
+                        
+                          {% for user_city in weather_api1 %}
+                          {% if user_city.message %}
+                                  <div class="alert alert-danger" role="alert">
+                                    <p> {{ user_city.city }} {{ user_city.message }}</p> 
+                                 </br>
+                                    
+                                    </div>
+                                  {% else %}
+                            <div class="alert alert-info" role="alert">
+                               <p> In {{ user_city.city }} now 
+                               {{ user_city.temp }}<sup>o</sup>C <img src="http://openweathermap.org/img/w/{{ user_city.icon }}.png" alt="Weather_photo"
+                               class="rounded float-right"></p> 
+                            </br>
+                               
+                               </div>
+                               {% endif %}
+                               {% endfor %}
+                  {% endif %}
+                   
+                   
+          </div>
+        </div>
+
+      </div>
+    
+  <!-- second widget-->
+ <!-- Sidebar Widgets Column -->
+ 
+ {% if weather_api2 %}
+ <div class="col-md-2">
+
+
+
+  <!-- Side Widget -->
+  <div class="card my-2">
+    <h5 class="card-header">Weather in favorite cities</h5>
+    <div class="card-body">
+      
+        {% for user_city in weather_api2 %}
+        {% if user_city.message %}
+                <div class="alert alert-danger" role="alert">
+                  <p> {{ user_city.city }} {{ user_city.message }}</p> 
+               </br>
+                  
+                  </div>
+                {% else %}
+          <div class="alert alert-info" role="alert">
+             <p> In {{ user_city.city }} now 
+             {{ user_city.temp }}<sup>o</sup>C <img src="{{ user_city.icon }}" alt="Weather_photo" height="42" width="42"
+             class="rounded float-right"></p> 
+          </br>
+             
+             </div>
+             {% endif %}
+             {% endfor %}
+             
+             {% else %}
+             <div class="col-md-2" hidden>
+
+
+
+              <!-- Side Widget -->
+              <div class="card my-2">
+                <h5 class="card-header">Weather in favorite cities</h5>
+                <div class="card-body">
+                  
+                    {% for user_city in weather_api2 %}
+                    {% if user_city.message %}
+                            <div class="alert alert-danger" role="alert">
+                              <p> {{ user_city.city }} {{ user_city.message }}</p> 
+                           </br>
+                              
+                              </div>
+                            {% else %}
+                      <div class="alert alert-info" role="alert">
+                         <p> In {{ user_city.city }} now 
+                         {{ user_city.temp }}<sup>o</sup>C <img src="{{ user_city.icon }}" alt="Weather_photo" height="42" width="42"
+                         class="rounded float-right"></p> 
+                      </br>
+                         
+                         </div>
+                         {% endif %}
+                         {% endfor %}
+            {% endif %}
+             
+             
+    </div>
+  </div>
+
+</div>
+  <!-- second widget-->
+  <!-- third widget-->
+  <!-- Sidebar Widgets Column -->
+  {% if weather_api3 %}
+ <div class="col-md-2">
+
+
+
+  <!-- Side Widget -->
+  <div class="card my-2">
+    <h5 class="card-header">Weather in favorite cities</h5>
+    <div class="card-body">
+      
+        {% for user_city in weather_api3 %}
+        {% if user_city.message %}
+                <div class="alert alert-danger" role="alert">
+                  <p> {{ user_city.city }} {{ user_city.message }}</p> 
+               </br>
+                  
+                  </div>
+                {% else %}
+          <div class="alert alert-info" role="alert">
+             <p> In {{ user_city.city }} now 
+             {{ user_city.temp }}<sup>o</sup>C <img src="{{ user_city.icon }}" alt="Weather_photo" height="42" width="42"
+             class="rounded float-right"></p> 
+          </br>
+             
+             </div>
+             {% endif %}
+             {% endfor %}
+             
+             {% else %}
+            {% endif %}
+             
+             
+    </div>
+  </div>
+
+</div>
+  <!-- third widget-->
+  
+  <!-- if user no auth-->
+      
+
+  {% endif %}
+
+  {% if not user.is_authenticated %}
+  <div class="col-md-4">
+    <div class="card my-4">
+      <h5 class="card-header">Weather in favorite cities</h5>
+      <div class="card-body">
+        {% for user_city in weather_info %}
+         {% if user_city.message %}
+         <div class="alert alert-danger" role="alert">
+          <p> {{ user_city.city }} {{ user_city.message }}</p> 
+       </br>
+          
+          </div>
+          {% else %}
+          <div class="alert alert-info" role="alert">
+            <p> In {{ user_city.city }} now 
+            {{ user_city.temp }}<sup>o</sup>C <img src="http://openweathermap.org/img/w/{{ user_city.icon }}.png" alt="Weather_photo"
+            class="rounded float-right"></p> 
+         </br>
+            
+            </div>
+            {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+
+
+  </div>
+  {% endif %}
+  
+    </div>
+    <!-- /.row -->
+
+  </div>
+  
+  <!-- /.container -->
+{% endblock %}
+ 

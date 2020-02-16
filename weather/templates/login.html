@@ -1,0 +1,33 @@
+ {% extends "weather/base.html" %}
+ {% block content %}
+</br>
+<form action = "{% url 'login_url' %}" method="POST">
+{% csrf_token %}
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+<p>Your username and password didn't match. Please try again.</p>
+</div>
+{% endif %}
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputEmail1">Login</label></br>
+    {{ form.username }}
+    
+  </div>
+  <div class="mx-auto" style="width: 200px;">
+    <label for="exampleInputPassword1">Password</label> </br>
+    {{ form.password }}
+  </div>
+  </br>
+  
+  <div class="mx-auto" style="width: 200px;">
+  <button type="submit" class="btn btn-primary">Login</button>
+  </div>
+  </br>
+  </br>
+
+</form>
+                 
+   
+{% endblock %}
+
+

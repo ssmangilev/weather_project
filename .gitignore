@@ -1,0 +1,13 @@
+*pyc
+__pacache__/
+bin/
+lib/
+lib64/
+include/
+share/
+/lib/
+/share/
+/bin/
+./bin/
+./share/
+./lib/
