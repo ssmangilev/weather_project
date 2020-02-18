@@ -104,7 +104,6 @@ urllib3==1.15.1
 virtualenv==15.1.0
 Werkzeug==0.16.0
 whitenoise==5.0.1
-wifite==2.5.0
 wrapt==1.11.2
 zim==0.72.0
 zipp==0.6.0
