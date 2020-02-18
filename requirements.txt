@@ -92,7 +92,6 @@ scipy==1.1.0
 SecretStorage==2.3.1
 setproctitle==1.1.10
 simplejson==3.17.0
-sip==4.19.20
 six==1.14.0
 smoke-zephyr==1.4.1
 sqlparse==0.3.0
