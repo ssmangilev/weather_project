@@ -128,7 +128,7 @@ AUTH_USER_MODEL = 'weather.CustomUser' # adding custom user model
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR,'project1/weather/static')
+STATIC_DIR = os.path.join(BASE_DIR,'weather/static')
 STATICFILES_DIRS=[STATIC_DIR,]
 STATIC_ROOT=BASE_DIR
 LOGIN_REDIRECT_URL = 'index_url'
